@@ -6,6 +6,7 @@ const awardsSchema = new Schema({
     awardNum: Number
 },{})
 
+
 const artistSchema = new Schema({
     name: {
         type: String,
@@ -23,7 +24,27 @@ const artistSchema = new Schema({
         type: Number,
         required: false
     }
+     
+     
+    
 },{});
 const Artist = mongoose.model('Artist', artistSchema);
 
-module.exports = Artist;
+
+
+
+const genreSchema = new Schema({
+    title: {
+        type: String,
+        required: false 
+    },
+    artist: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Artist"
+    }
+},{});
+const Genre = mongoose.model('Genre', genreSchema);
+
+
+
+module.exports = {Artist, Genre};
