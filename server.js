@@ -1,10 +1,16 @@
 const express = require("express");
+const cors = require("cors");
 const mongoose = require("mongoose");
 const { Artist, Genre} = require("./models/models");
 const { reset } = require("nodemon");
 
 // express app
 const app = express();
+
+app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
